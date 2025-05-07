@@ -19,7 +19,7 @@ const getPokemons = async(limit= 20, offset = 0): Promise<SimplePokemon[]> => {
 
 
 
-export const PokemonsPage = async() => {
+const PokemonsPage = async() => {
 
     const pokemons = await getPokemons(151);
     

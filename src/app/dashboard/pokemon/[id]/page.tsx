@@ -1,6 +1,6 @@
 
 
-export const PokemonPage = () => {
+const PokemonPage = () => {
   return (
     <div>hello Pokemon Page</div>
   )
