@@ -7,20 +7,12 @@ interface Props {
     pokemon: SimplePokemon;
 }
 
-const imageStyle = {
-    width: '100px', 
-    height: '100px',
-};
-  
-
-
 export const PokemonCard = ({ pokemon }:Props) => {
   return (
     <div className="mx-auto right-0 mt-2 w-60">
                 <div className="bg-white rounded overflow-hidden shadow-lg">
                     <div className="flex flex-col items-center text-center p-6 bg-gray-800 border-b">
                     <Image
-                        style={imageStyle}
                         key={ pokemon.id }
                         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${ pokemon.id }.svg`}
                         alt={ pokemon.name }
