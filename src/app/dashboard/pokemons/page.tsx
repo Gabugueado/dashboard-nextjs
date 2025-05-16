@@ -1,5 +1,5 @@
-import { PokemonsResponse, SimplePokemon } from "@/pokemons";
-import { PokemonGrid } from '../../../pokemons/components/PokemonGrid';
+import { PokemonsResponse, SimplePokemon } from "@/pokemon";
+import { PokemonGrid } from '../../../pokemon/components/PokemonGrid';
 
 
 

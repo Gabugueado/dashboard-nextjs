@@ -1,4 +1,4 @@
-import type { Pokemon } from "@/pokemons"
+import type { Pokemon } from "@/pokemon"
 import type { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
