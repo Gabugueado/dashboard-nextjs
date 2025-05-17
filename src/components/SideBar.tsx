@@ -19,7 +19,7 @@ const menuItems = [
         subtitle: 'Counter Manager'
     },
     {
-        path: '/dashboard/pokemons/',
+        path: '/dashboard/pokemon/',
         icon: <CgPokemon size={40} />,
         title: 'Pokemons',
         subtitle: 'Generación Estática'

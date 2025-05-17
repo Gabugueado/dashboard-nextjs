@@ -1,17 +1,33 @@
-import type { Pokemon } from "@/pokemon"
+import type { Pokemon, PokemonsResponse } from "@/pokemons"
 import type { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 
+
 interface Props  {
-  params: Promise<{ id: string }>;
+  params: Promise<{ name: string }>;
 }
 
-const getPokemon = async (id: string): Promise<Pokemon> => {
-    
-    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`,
-      {
+export const generateStaticParams = async () => {
+  
+  const response: PokemonsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${151}&offset=${0}`,{
         cache: 'force-cache'
+    })
+    .then( res => res.json() )
+
+  return response.results.map( ({ name }) =>({
+    name: name
+  }));
+}
+
+
+const getPokemon = async (name: string): Promise<Pokemon> => {
+    
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`,
+      {
+        next: {
+          revalidate: 60 * 60 * 30 * 6
+        }
       }
     ).then(resp => resp.json())
   
@@ -25,12 +41,12 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
 
-  const { id } = await params
+  const { name } = await params
   
 
-  const {  id:idpokemon , name } = await getPokemon(id)
+  const {  id , name: namePokemon } = await getPokemon(name)
 
-  if (!idpokemon && !name){
+  if (!id && !namePokemon){
     return {
       title: `Página del pokemon`,
       description: `Error `,
@@ -38,16 +54,16 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
   }
 
   return {
-    title: `#${idpokemon} - ${name}`,
-    description: `Pokemon ${name}`,
+    title: `Pokemon - ${name}`,
+    description: `Pokemon: ${name}`,
   }
 
 }
 
 const PokemonPage = async ({ params }: Props) => {
 
-  const { id } = await params
-  const pokemon = await getPokemon(id)
+  const { name } = await params
+  const pokemon = await getPokemon(name)
 
   return (
     <>
