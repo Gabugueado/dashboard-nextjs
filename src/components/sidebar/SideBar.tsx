@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 import { IoBrowsersOutline, IoCalculatorOutline, IoLogoReact } from 'react-icons/io5'
-import { CgPokemon } from "react-icons/cg";
-
+import { CgHeart, CgPokemon } from "react-icons/cg";
 import { SideBarMenuItem } from './SideBarMenuItem';
+
 
 const menuItems = [
     {
@@ -19,10 +19,16 @@ const menuItems = [
         subtitle: 'Counter Manager'
     },
     {
-        path: '/dashboard/pokemon/',
+        path: '/dashboard/pokemons/',
         icon: <CgPokemon size={40} />,
         title: 'Pokemons',
         subtitle: 'Generación Estática'
+    },
+    {
+        path: '/dashboard/favorites/',
+        icon: <CgHeart size={40} />,
+        title: 'Favorites',
+        subtitle: 'GlobalState'
     },
 ]
 
