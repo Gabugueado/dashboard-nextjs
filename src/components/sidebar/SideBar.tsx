@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import { IoBrowsersOutline, IoCalculatorOutline, IoLogoReact } from 'react-icons/io5'
+import { IoBrowsersOutline, IoCalculatorOutline, IoLogoReact, IoListOutline } from 'react-icons/io5' // Added IoListOutline
 import { CgHeart, CgPokemon } from "react-icons/cg";
 import { SideBarMenuItem } from './SideBarMenuItem';
 
@@ -17,6 +17,12 @@ const menuItems = [
         icon: <IoCalculatorOutline size={40} />,
         title: 'Counter',
         subtitle: 'Counter Manager'
+    },
+    {
+        path: '/dashboard/todos', // New menu item
+        icon: <IoListOutline size={40} />, // Changed icon size to 40 to match others
+        title: 'Todos',
+        subtitle: 'Manage your tasks'
     },
     {
         path: '/dashboard/pokemons/',
